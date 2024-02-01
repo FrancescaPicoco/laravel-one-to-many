@@ -8,6 +8,7 @@
        <img src="{{ $artItem->img }}" class="card-img-top" alt="...">
        <div class="card-body">
          <p> {{ $artItem->description }}</p>
+         <p> {{ $artItem->type ? $artItem->type->name : 'no category' }}</p>
          <h3 class="red"> {{ $artItem->author }}</h3>
         <a href="{{ route('admin.artists.edit', $artItem->id) }}" class="btn btn-outline-secondary">Edit</a>
         <a href="{{ route('admin.artists.show', $artItem->id) }}" class="btn btn-outline-secondary">show details</a>
