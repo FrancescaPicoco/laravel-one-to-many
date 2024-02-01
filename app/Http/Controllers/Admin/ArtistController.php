@@ -1,14 +1,15 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller; 
-use App\Models\DashboardData;
+use App\Http\Controllers\Controller; // Controller di base da importare
+use App\Models\Artist;
+use App\Http\Requests\StoreArtistRequest;
+use App\Http\Requests\UpdateArtistRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 
-class DashboardDataController extends Controller
+class ArtistController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class DashboardDataController extends Controller
         ])->validate();
         return $validated;
     }
-    
+
     public function index()
     {
-        $artItems= DashboardData::all();
+        $artItems= Artist::all();
         return view('admin.artists.index',compact("artItems"));
     }
 
@@ -49,11 +50,11 @@ class DashboardDataController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreArtistRequest $request)
     {
         $data = $request->all();
         $valid_data=$this->validation($data); //questa riga richiama il metodo della f.validation e sost stringa 60 to 83
-        $newArtist = new DashboardData();
+        $newArtist = new Artist();
         $newArtist->fill($valid_data); //prende tutti i dati dalla richiesta e li usa per popolare ma prima si validano i dati
         // $newArtist->title =$data['title'];          
         // $newArtist->description=$data['description'];   //da 58 a 61 canc
@@ -67,37 +68,37 @@ class DashboardDataController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {    
-        $artItems = DashboardData::find($id);
+    public function show(String $id)
+    {
+        $artItems = Artist::find($id);
         return view('admin.artists.show', compact("artItems"));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(String $id)
     {
-        $artItems = DashboardData::find($id);
+        $artItems = Artist::find($id);
         return view('admin.artists.edit', compact("artItems"));
     }
+
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateArtistRequest $request, String $id)
     {
         $data = $request->except('_token' , '_method');
         $valid_data=$this->validation($data);
-        $dashboardData = DashboardData::find($id);
-        $dashboardData->update($valid_data);  
+        $artist = Artist::find($id);
+        $artist->update($valid_data);  
         return redirect()->route('admin.artists.index');
-        // return('dati ignorati');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DashboardData $dashboardData)
+    public function destroy(Artist $artist)
     {
         //
     }

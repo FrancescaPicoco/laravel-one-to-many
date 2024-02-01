@@ -21,5 +21,9 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        $this->call([
+            TypeSeeder::class,  //ordine imp. perche artist ricerca il type quindi creare prima il type
+            ArtistSeeder::class,
+        ]);
     }
 }

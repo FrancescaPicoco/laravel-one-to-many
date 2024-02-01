@@ -23,4 +23,4 @@
  <div class="text-center">
 	<h1 class="mytext">Benvenuto nel tuo profilo</h1>
  </div>
- @endsection
+@endsection

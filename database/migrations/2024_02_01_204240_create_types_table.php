@@ -13,11 +13,9 @@ return new class extends Migration
     {
         Schema::create('types', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->string("description");
-            $table->string("epoch name");
-            $table->date("from");
-            $table->date("to");
+            $table->string('name');
+            $table->string('description');
+            $table->string('epoch');
             $table->timestamps();
         });
     }
