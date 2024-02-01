@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController; //<---- Import del controller precedentemente creato!
 use App\Http\Controllers\Admin\ArtistController;
+use App\Http\Controllers\Admin\TypeController;
 /* ... */
 
 Route::get('/', function () {
