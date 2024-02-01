@@ -8,8 +8,9 @@
        <div class="card-body">
          <p> {{ $type->description }}</p>
          <h3 class="red"> {{ $type->epoch }}</h3>
-        {{-- <a href="{{ route('admin.artists.edit', $artItem->id) }}" class="btn btn-outline-secondary">Edit</a>
-        <a href="{{ route('admin.artists.show', $artItem->id) }}" class="btn btn-outline-secondary">show details</a> --}}
+        <a href="#" class="btn btn-outline-secondary">mostra opere</a>
+        <a href="{{ route('admin.types.edit', $type->id) }}" class="btn btn-outline-secondary">Edit</a>
+        {{--<a href="{{ route('admin.artists.show', $artItem->id) }}" class="btn btn-outline-secondary">show details</a> --}}
        </div>
    </div>
    @endforeach
